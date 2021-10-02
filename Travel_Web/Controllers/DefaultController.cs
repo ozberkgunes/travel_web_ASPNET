@@ -13,5 +13,10 @@ namespace travel_web.Controllers
         {
             return View();
         }
+        
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
