@@ -1,0 +1,66 @@
+﻿
+@model travel_web.Models.DAL.BlogYorum
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_testLayout.cshtml";
+}
+
+
+<html>
+<head>
+    <link href="/personal_blog-web/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/personal_blog-web/css/style.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!----webfonts---->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
+
+
+</head>
+<body>
+
+    <!--/header-->
+    <div class="single">
+        <div class="container">
+            <div class="col-md-8 single-main">
+                <div class="single-grid">
+                    @foreach (var item in Model.Blog)
+                    {
+                        <img src="@item.BlogImage" alt="" />
+                        <a href="/Blog/BlogDetay/@item.Id" style="margin-bottom:20px">@item.Baslik</a>
+                        <p>
+                            @item.Aciklama @Convert.ToDateTime(item.Tarih).ToString("dd/MM/yyyy")
+                        </p>
+                    }
+
+                </div>
+                <br />
+                <div class="col-md-4 side-content">
+                    <div class="recent">
+                        <h3>Bloglar</h3>
+                        <ul>
+                            @foreach (var item in Model.BlogSayi)
+                            {
+                                <li><a href="/Blog/BlogDetay/@item.Id">@item.Baslik</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="comments">
+                        <h3>Son Yorumlar</h3>
+                        <ul>
+                            @foreach (var item in Model.YorumSayisi)
+                            {
+                                <li><a>@item.KullaniciAdi.Substring(0, 6) </a> <a href="/Blog/BlogDetay/@item.Id">@item.Yorum.Substring(0, 10) ...;</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

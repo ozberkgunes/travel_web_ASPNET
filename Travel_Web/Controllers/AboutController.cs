@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using travel_web.Models.DAL;
 namespace travel_web.Controllers
 {
-    public class DefaultController : Controller
+    public class AboutController : Controller
     {
-        // GET: Default
+        // GET: About
+        Contex con = new Contex();
         public ActionResult Index()
         {
-            return View();
+            var item = con.Hakkimizdas.ToList();
+            return View(item);
         }
-        
     }
 }

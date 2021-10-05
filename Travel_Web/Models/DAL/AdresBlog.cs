@@ -6,16 +6,16 @@ using System.Web;
 
 namespace travel_web.Models.DAL
 {
-    public class Blog
+    public class AdresBlog
     {
         [Key]
         public int Id { get; set; }
         public string Baslik { get; set; }
-
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime Tarih { get; set; }
         public string Aciklama { get; set; }
-        public string BlogImage { get; set; }
-        public ICollection<Yorumlar> Yorumlars { get; set; }
+        public string AcikAdres { get; set; }
+        public string Mail { get; set; }
+        public string Telefon { get; set; }
+        public string Konum { get; set; }
+
     }
 }

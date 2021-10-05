@@ -1,0 +1,29 @@
+﻿@using travel_web.Models.DAL
+@model List<Hakkimizda>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_testLayout.cshtml";
+}
+
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+
+<div class="content">
+    <div class="wrap">
+        <div class="about">
+            <h3>Hakkmızda</h3>
+
+            @foreach (var item in Model)
+            {<img src="@item.FotoUrl" alt="İzmir" />
+                <p>@item.Aciklama</p>
+            }
+        </div>
+    </div>
+</div>
+
