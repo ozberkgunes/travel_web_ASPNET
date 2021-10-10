@@ -20,6 +20,16 @@ namespace travel_web.Controllers
             var bloglar = c.Blogs.Take(3).ToList();
             return PartialView(bloglar);
         }
+        public PartialViewResult topBlogs()
+        {
+            var b = c.Blogs.ToList();
+            return PartialView(b);
+        }
+        public PartialViewResult footerBlogs()
+        {
+            var bloglar = c.Blogs.Take(3).ToList();
+            return PartialView(bloglar);
+        }
         
     }
 }

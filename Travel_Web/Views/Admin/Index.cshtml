@@ -1,0 +1,38 @@
+﻿@using travel_web.Models.DAL
+@model List<Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="table-responsive m-t-40 table-bordered">
+    <table id="myTable" class="table table-bordered table-striped text-center" style="font-size:20px;">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Kapak Fotoğrafı</th>
+                <th>Başlık</th>
+                <th>İşlemler</th>
+                <th>Detaylar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td><img src="@item.BlogImage " style="height:50px; width:150px;" /></td>
+                    <td>@item.Baslik</td>
+                    <td>
+                        <button class="btn btn-warning"><i class="fa fa-user-edit" title="Düzenle"></i></button>
+                        <button class="btn btn-danger" title="Sil"><i class="fa fa-minus-circle"></i></button>
+                    </td>
+                    <th> <a class="btn btn-info" href="/Blog/BlogDetay/@item.Id"><i class="fa fa-eye" title="Detaylar"></i></a></th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<a href="/Admin/BlogEkle" class="btn btn-primary">Yeni Blog Ekle</a>
