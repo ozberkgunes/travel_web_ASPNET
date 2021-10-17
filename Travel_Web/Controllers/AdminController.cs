@@ -23,8 +23,22 @@ namespace travel_web.Controllers
         [HttpPost]
         public ActionResult BlogEkle(Blog b)
         {
-            return View();
+            c.Blogs.Add(b);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
+        public ActionResult BlogSil(int Id)
+        {
+            var blog = c.Blogs.Find(Id);
+            c.Blogs.Remove(blog);
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult BlogDuzenle(int Id)
+        {
+            //Düzenlenecek
+            return RedirectToAction("Index"); 
         }
     }
 }
