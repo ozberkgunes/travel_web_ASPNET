@@ -37,8 +37,20 @@ namespace travel_web.Controllers
         }
         public ActionResult BlogDuzenle(int Id)
         {
-            //Düzenlenecek
-            return RedirectToAction("Index"); 
+            var blog = c.Blogs.Find(Id);
+            return View("BlogDuzenle", blog); 
         }
+        [HttpPost]
+        public ActionResult BlogDuzenle(Blog b)
+        {
+            var blog = c.Blogs.Find(b.Id);
+            blog.Aciklama = b.Aciklama;
+            blog.BlogImage = b.BlogImage;
+            blog.Baslik = b.Baslik;
+            blog.Tarih = b.Tarih;
+            c.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
