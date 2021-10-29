@@ -27,5 +27,20 @@ namespace travel_web.Controllers
             by.Yorum = con.Yorumlars.Where(x => x.BlogId == Id).ToList();
             return View(by);
         }
+        [HttpGet]
+        public PartialViewResult YorumYap(int id)
+        {
+            ViewBag.deger = id;
+            return PartialView();
+        }
+
+        [HttpPost]
+        public PartialViewResult YorumYap(Yorumlar y)
+        {
+            con.Yorumlars.Add(y);
+            con.SaveChanges();
+            return PartialView();
+        }
+
     }
 }

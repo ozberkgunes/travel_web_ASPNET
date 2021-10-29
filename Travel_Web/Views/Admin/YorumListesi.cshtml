@@ -1,0 +1,38 @@
+﻿@using travel_web.Models.DAL
+@model List<Yorumlar>
+@{
+    ViewBag.Title = "YorumListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yorum Listesi</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Kullanici</th>
+        <th>Mail</th>
+        <th>Yorum</th>
+        <th>BlogId</th>
+        <th>İşlemler</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.KullaniciAdi</td>
+            <td>@item.Mail</td>
+            <td>@item.Yorum</td>
+            <td>@item.Blog.Baslik</td>
+            <td>
+                <a class="btn btn-warning" href="/Admin/YorumDuzenle/@item.Id"><i class="fa fa-user-edit" title="Düzenle"></i></a>
+                <a class="btn btn-danger" title="Sil" href="/Admin/YorumSil/@item.Id"><i class="fa fa-minus-circle"></i></a>
+            </td>
+        </tr>
+    }
+
+
+
+</table>
