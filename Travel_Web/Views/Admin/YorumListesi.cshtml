@@ -28,7 +28,7 @@
             <td>@item.Blog.Baslik</td>
             <td>
                 <a class="btn btn-warning" href="/Admin/YorumDuzenle/@item.Id"><i class="fa fa-user-edit" title="Düzenle"></i></a>
-                <a class="btn btn-danger" title="Sil" href="/Admin/YorumSil/@item.Id"><i class="fa fa-minus-circle"></i></a>
+                <a class="btn btn-danger" title="Sil" href="/Admin/YorumSil/@item.Id" onclick="return confirm('Yorumunuzu silmek istediğinizden emin misiniz ?');"><i class="fa fa-minus-circle"></i></a>
             </td>
         </tr>
     }

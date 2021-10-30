@@ -56,6 +56,29 @@ namespace travel_web.Controllers
             var yorumlar = c.Yorumlars.ToList();
             return View(yorumlar);
         }
+        public ActionResult YorumSil(int id)
+        {
+            var yorum = c.Yorumlars.Find(id);
+            c.Yorumlars.Remove(yorum);
+            c.SaveChanges();
+            return RedirectToAction("YorumListesi");
+        }
+
+        public ActionResult YorumDuzenle(int id)
+        {
+            var yorumlar = c.Yorumlars.Find(id);
+            return View("YorumDuzenle", yorumlar);
+        }
+        [HttpPost]
+        public ActionResult YorumDuzenle(Yorumlar y)
+        {
+            var yorumlar = c.Yorumlars.Find(y.Id);
+            yorumlar.KullaniciAdi = y.KullaniciAdi;
+            yorumlar.Mail = y.Mail;
+            yorumlar.Yorum = y.Yorum;
+            c.SaveChanges();
+            return RedirectToAction("YorumListesi");
+        }
 
     }
 }

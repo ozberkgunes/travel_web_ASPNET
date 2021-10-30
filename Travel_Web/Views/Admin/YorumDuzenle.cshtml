@@ -1,0 +1,29 @@
+﻿@model travel_web.Models.DAL.Yorumlar
+
+@{
+    ViewBag.Title = "YorumDuzenle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>YorumDuzenle</h2>
+
+@using (Html.BeginForm("YorumDuzenle", "Admin", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(x => x.Id)
+    @Html.TextBoxFor(x => x.Id, new { @class = "form-control", @readonly = "readonly" })
+    <br />
+    @Html.LabelFor(x => x.KullaniciAdi)
+    @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Mail)
+    @Html.TextBoxFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Yorum)
+    @Html.TextAreaFor(x => x.Yorum, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.Blog.Baslik)
+    @Html.TextBoxFor(x => x.Blog.Baslik, new { @class = "form-control", @readonly = "readonly" })
+    <button class="btn btn-success" onclick="return confirm ('Değişiklikler Kaydetmek İstediğinize Emin Misiniz ? ');">Kaydet</button>
+</div>
+}
