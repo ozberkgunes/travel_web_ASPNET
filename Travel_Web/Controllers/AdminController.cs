@@ -10,24 +10,26 @@ namespace travel_web.Controllers
     {
         // GET: Admin
         Contex c = new Contex();
+        [Authorize]
         public ActionResult Index()
         {
             var bloglar = c.Blogs.ToList();
             return View(bloglar);
         }
-        [HttpGet]
+        
+        [Authorize, HttpGet]
         public ActionResult BlogEkle()
         {
             return View();
         }
-        [HttpPost]
+        [Authorize,HttpPost]
         public ActionResult BlogEkle(Blog b)
         {
             c.Blogs.Add(b);
             c.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult BlogSil(int Id)
         {
             var blog = c.Blogs.Find(Id);
@@ -35,12 +37,14 @@ namespace travel_web.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [Authorize]
         public ActionResult BlogDuzenle(int Id)
         {
             var blog = c.Blogs.Find(Id);
             return View("BlogDuzenle", blog); 
         }
-        [HttpPost]
+        [Authorize, HttpPost]
         public ActionResult BlogDuzenle(Blog b)
         {
             var blog = c.Blogs.Find(b.Id);
@@ -51,11 +55,14 @@ namespace travel_web.Controllers
             c.SaveChanges();
             return RedirectToAction("Index");
         }
+        [Authorize]
         public ActionResult YorumListesi()
         {
             var yorumlar = c.Yorumlars.ToList();
             return View(yorumlar);
         }
+
+        [Authorize]
         public ActionResult YorumSil(int id)
         {
             var yorum = c.Yorumlars.Find(id);
@@ -64,12 +71,14 @@ namespace travel_web.Controllers
             return RedirectToAction("YorumListesi");
         }
 
+        [Authorize]
         public ActionResult YorumDuzenle(int id)
         {
             var yorumlar = c.Yorumlars.Find(id);
             return View("YorumDuzenle", yorumlar);
         }
-        [HttpPost]
+
+        [Authorize, HttpPost]
         public ActionResult YorumDuzenle(Yorumlar y)
         {
             var yorumlar = c.Yorumlars.Find(y.Id);
